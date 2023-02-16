@@ -930,11 +930,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Biblioteca\\Biblioteca.csproj",
+      "projectUniqueName": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Projeto-Biblioteca-SENAC\\Biblioteca.csproj",
       "projectName": "Biblioteca",
-      "projectPath": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Biblioteca\\Biblioteca.csproj",
+      "projectPath": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Projeto-Biblioteca-SENAC\\Biblioteca.csproj",
       "packagesPath": "C:\\Users\\denes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Biblioteca\\obj\\",
+      "outputPath": "C:\\Users\\denes\\OneDrive\\Área de Trabalho\\Biblioteca-senac\\Projeto-Biblioteca-SENAC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\denes\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -989,7 +989,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
