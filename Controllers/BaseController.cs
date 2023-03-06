@@ -13,5 +13,10 @@ namespace Biblioteca.Controllers
                 filterContext.HttpContext.Response.Redirect("/Home/Login");
             }
         }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View ("Login", "Usuario");
+        }
     }
 }

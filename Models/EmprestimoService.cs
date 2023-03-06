@@ -45,5 +45,37 @@ namespace Biblioteca.Models
                 return bc.Emprestimos.Find(id);
             }
         }
+
+        public ICollection<Emprestimo> GetEmprestimosFull()
+        {
+            using (var context = new BibliotecaContext())
+            {
+                IQueryable<Emprestimo> consulta =
+                    context.Emprestimos.Include(p => p.Livro).OrderByDescending(p => p.LivroId);
+
+                return consulta.ToList();
+            }
+        }
+
+        public ICollection<Emprestimo> GetEmprestimosFull(int page, int size)
+        {
+            using(var context = new BibliotecaContext())
+            {
+                int pular = (page - 1) * size;
+
+                IQueryable<Emprestimo> consulta =
+                context.Emprestimos.Include(p => p.Livro).OrderByDescending(p => p.LivroId);
+
+                return consulta.Skip(pular).Take(size).ToList();
+            }
+        }
+
+        public int CountEmprestimos()
+        {
+            using (var context = new BibliotecaContext())
+            {
+                return context.Emprestimos.Count();
+            }
+        }
     }
 }

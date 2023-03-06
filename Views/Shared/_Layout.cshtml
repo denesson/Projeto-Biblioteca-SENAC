@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,30 +9,47 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Biblioteca</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" style="margin-left: -153px " asp-area="" asp-controller="Home" asp-action="Index">Biblioteca</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="margin-left: 103px;">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" >Livros</a>
+                            <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#">Livros</a>
                             <div class="dropdown-menu" aria-labelledby="menuLivros">
                                 <a class="dropdown-item" href="/Livro/Cadastro">Cadastro</a>
                                 <a class="dropdown-item" href="/Livro/Listagem">Listagem</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#">Emprestimo</a>
+                            <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown"
+                                href="#">Emprestimo</a>
                             <div class="dropdown-menu" aria-labelledby="menuLivros">
                                 <a class="dropdown-item" href="/Emprestimo/Listagem">Listagem</a>
                                 <a class="dropdown-item" href="/Emprestimo/Cadastro">Cadastro</a>
                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#">Cadastro</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/Usuario/Lista">Listagem</a>
+                                <a class="dropdown-item" href="/Usuario/Cadastro">Cadastro</a>
+                            </div>
+                        </li>
+                        <li class="nav-link text-light">
+                            <p class="nav-link text-light" style="margin-top: -31px;">
+                                @if (Context.Session.GetString("Nome") != null)
+                                {
+                                    <p style="display: contents;">@Context.Session.GetString("Nome") - <a class="nav-link text-light" style="display: contents;" asp-action="Logout">Sair</a></p>
+                                }
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -51,8 +70,10 @@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site2.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

@@ -1,6 +1,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Biblioteca.Models
 {
@@ -80,6 +82,38 @@ namespace Biblioteca.Models
             using(BibliotecaContext bc = new BibliotecaContext())
             {
                 return bc.Livros.Find(id);
+            }
+        }
+
+        public ICollection<Livro> GetLivrosFull()
+        {
+            using (var context = new BibliotecaContext())
+            {
+                IQueryable<Livro> consulta =
+                    context.Livros.Include(p => p.Ano).OrderByDescending(p => p.Autor);
+
+                return consulta.ToList();
+            }
+        }
+
+        public ICollection<Livro> GetLivrosFull(int page, int size)
+        {
+            using(var context = new BibliotecaContext())
+            {
+                int pular = (page - 1) * size;
+
+                IQueryable<Livro> consulta =
+                context.Livros.Include(p => p.Ano).OrderByDescending(p => p.Autor);
+
+                return consulta.Skip(pular).Take(size).ToList();
+            }
+        }
+
+        public int CountLivros()
+        {
+            using (var context = new BibliotecaContext())
+            {
+                return context.Livros.Count();
             }
         }
     }

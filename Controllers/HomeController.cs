@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Biblioteca.Models;
 using Microsoft.AspNetCore.Http;
+using Projeto_Biblioteca_SENAC.Models;
 
 namespace Biblioteca.Controllers
 {
@@ -33,21 +34,27 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Login(string login, string senha)
         {
-            if(login != "admin" || senha != "123")
+            if(Autenticacao.verificaLoginSenha(login,senha,this))
             {
-                ViewData["Erro"] = "Senha inválida";
-                return View();
+                return RedirectToAction("Index");
             }
             else
             {
-                HttpContext.Session.SetString("user", "admin");
-                return RedirectToAction("Index");
+                ViewData["Erro"] = "Senha Inválida";
+                return View();
             }
         }
 
-        public IActionResult Privacy()
+        public IActionResult NeedAdmin()
         {
+            Autenticacao.CheckLogin(this);
             return View();
+        }
+        
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View ("Login", "Usuario");
         }
     }
 }
